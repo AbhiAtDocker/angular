@@ -1,4 +1,4 @@
-package com.angular.angular;
+package com.angular.sb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
