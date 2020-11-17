@@ -4,20 +4,22 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import com.angular.sb.model.Student;
+import com.angular.sb.mod.Student1;
 
+@Repository
 public class StudentDaoImpl implements StudentDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public boolean saveStudent(Student student) {
+	public boolean saveStudent(Student1 student) {
 		 boolean status=false;  
 	        try {  
 	            sessionFactory.getCurrentSession().save(student);  
@@ -29,16 +31,16 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public List<Student> getStudents() {
+	public List<Student1> getStudents() {
 		Session currentSession = sessionFactory.getCurrentSession();  
-        Query<Student> query=currentSession.createQuery("from Student", Student.class);  
-        List<Student> list=query.getResultList();  
+        Query<Student1> query=currentSession.createQuery("from Student", Student1.class);  
+        List<Student1> list=query.getResultList();  
         return list;  
 	}
 
 	@Override
     @Transactional
-	public boolean deleteStudent(Student student) {
+	public boolean deleteStudent(Student1 student) {
 		 boolean status=false;  
 	        try {  
 	            sessionFactory.getCurrentSession().delete(student);  
@@ -50,17 +52,17 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public List<Student> getStudentById(Student student) {
+	public List<Student1> getStudentById(Student1 student) {
 		 Session currentSession = sessionFactory.getCurrentSession();  
-	        Query<Student> query=currentSession.createQuery("from Student where student_id=:student_id", Student.class);  
+	        Query<Student1> query=currentSession.createQuery("from Student where student_id=:student_id", Student1.class);  
 	        query.setParameter("student_id", student.getStudent_id());  
-	        List<Student> list=query.getResultList();  
+	        List<Student1> list=query.getResultList();  
 	        return list; 
 	}
 
 	@Override
 	@Transactional
-	public boolean updateStudent(Student student) {
+	public boolean updateStudent(Student1 student) {
 		  boolean status=false;  
 	        try {  
 	            sessionFactory.getCurrentSession().update(student);  

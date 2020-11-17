@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.angular.sb.model.Student;
+import com.angular.sb.mod.Student1;
 import com.angular.sb.service.StudentService;
 
 @RestController
@@ -24,32 +24,32 @@ public class StudentController {
 	private StudentService studentService; 
 	
 	 @PostMapping("save-student")  
-	    public boolean saveStudent(@RequestBody Student student) {  
+	    public boolean saveStudent(@RequestBody Student1 student) {  
 	         return studentService.saveStudent(student);  
 	          
 	    }  
 	
 	 
 	 @GetMapping("students-list")  
-	    public List<Student> allstudents() {  
+	    public List<Student1> allstudents() {  
 	         return studentService.getStudents();  
 	    }  
 
 	 @DeleteMapping("delete-student/{student_id}")  
-	    public boolean deleteStudent(@PathVariable("student_id") long student_id,Student student) {  
+	    public boolean deleteStudent(@PathVariable("student_id") long student_id,Student1 student) {  
 	        student.setStudent_id(student_id);  
 	        return studentService.deleteStudent(student);  
 	    }  
 	 
 	 
 	   @GetMapping("student/{student_id}")  
-	    public List<Student> allstudentByID(@PathVariable("student_id") int student_id,Student student) {  
+	    public List<Student1> allstudentByID(@PathVariable("student_id") int student_id,Student1 student) {  
 	         student.setStudent_id(student_id);  
 	         return studentService.getStudentByID(student);  
 	    }
 	   
 	   @PostMapping("update-student/{student_id}")  
-	    public boolean updateStudent(@RequestBody Student student,@PathVariable("student_id") int student_id) {  
+	    public boolean updateStudent(@RequestBody Student1 student,@PathVariable("student_id") int student_id) {  
 	        student.setStudent_id(student_id);  
 	        return studentService.updateStudent(student);  
 	    }  
